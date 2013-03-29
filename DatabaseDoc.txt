@@ -1,0 +1,62 @@
+We have Users, who have a name and password:
+
+{
+  _id: PERSON_ID,
+  name: "Mike Dirolf"
+  pw: "Some Hashed Password"
+}
+We have a separate collection of Addresses, where each address maintains a reference to a single Person:
+
+{
+  _id: ADDRESS_ID,
+  person: PERSON_ID,
+  address: "mike@corp.fiesta.cc"
+}
+We have Recipes, each of which is basically just an ID (IRL there is some more group-specific metadata that would be in here as well, but we’re going to ignore it to focus on the relationships):
+
+{
+  _id: GROUP_ID
+}
+Lastly, we have RecipesToUsers, which associate a Person with a Group. Each Membership includes the list name that the Person is using for the Group, and a reference to the Address that they want to receive mail at for that Group:
+
+{
+  _id: MEMBERSHIP_ID,
+  person: PERSON_ID,
+  group: GROUP_ID,
+  address: ADDRESS_ID,
+  group_name: "family"
+}
+
+Tags
+
+TagsToRecipes
+
+
+User
+
+name, pwd, email, list of contributed recipes, list of saved recipes, list of favorite categories
+
+Recipes
+
+name, tags, ingredients, instructions,
+{
+  name:"Stir Fry",  
+  dateAdded: new Date('Mar 25, 2013')
+  tags:["Dinner","Quick","Easy"],
+  ingredients: [
+                  {type:"Broccoli",quantity:"1",unit:"cup",prepType:"chopped"}
+                  {type:"Carrots",quantity:"1",unit:"cup",prepType:"chopped"}
+                {type:"Peppers",quantity:"1",unit:"cup",prepType:"chopped"}
+                  item4:{type:"Shrimp",quantity:"2",unit:"cup"}
+                ]
+  instructions: [
+                  step1:"Chop the broccoli, carrots and peppers",
+                  step2:"In a wok or large frying pan cook the vegatables",
+                  step3:"Add the shrimp and a terryaki sause of your choice"
+                  step4:"Serve with rice, makes enough for 2-3 people"
+                ]
+}
+
+Comments
+ingredient and instruction objects have a comments object
+the comments object cotains the user who made them and the comment

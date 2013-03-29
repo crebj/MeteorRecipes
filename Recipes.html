@@ -1,0 +1,20 @@
+<head>
+  <title>Recipes</title>
+</head>
+
+<body>
+  <div id="recipes-container">
+    {{> listRecipes}}
+  </div>
+</body>
+
+<template name="listRecipes">
+  <h2 class="title">Recipes</h2>
+  <div id="categories" class="btn-group">
+      {{#each recipes}}
+      <div class="category btn btn-inverse">
+        {{name}}
+      </div>
+      {{/each}}
+  </div>
+</template>
